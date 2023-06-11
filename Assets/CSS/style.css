@@ -28,6 +28,9 @@ body{
     justify-content: center;
 }
 
+.infoContent span{
+    color: rgb(82, 26, 133);
+}
 /* Location of "Start Quiz" button */
 .startButton{
     display: flex;
