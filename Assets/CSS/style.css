@@ -6,7 +6,7 @@ body{
 
 /* Styling of the "Quiz Information" */
 .quizInfo{
-    display: inline;
+    display: none;
 }
 
 .infoHead {
@@ -39,6 +39,8 @@ body{
 
 /* Styling of "Start Quiz" button */
 .startButton Button{
+    /* display: block; */
+    display: none;
     background-color: rgb(82, 26, 133);
     color: white;
     font-size: 25px;
@@ -47,6 +49,7 @@ body{
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
+    transition: all 0.4s ease;
 }
 
 .startButton Button:hover{
@@ -64,9 +67,11 @@ body{
     background-color: rgb(82, 26, 133);
     padding: 5px;
     cursor: pointer;
+    transition: all 0.4s ease;
+
 }
 
-.highScore Button:hover{
+.highScore button:hover{
     background-color: rgb(157, 79, 230);
 }
 
@@ -76,4 +81,65 @@ body{
 
 .timeClock {
     font-size: large;
+}
+
+/* Styling of Question Box */
+.questionBox {
+    /* position: flex; */
+    /* width: 100px; */
+    /* display: block; */
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionHeader,
+.questionContent,
+.questionOptions,
+.questionNumber{
+    width:200px;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* .optionList{ */
+    /* width: 190px; */
+    /* justify-content: space-between; */
+    /* display: block; */
+    /* align-items: center; */
+    /* text-align: center; */
+/* } */
+.questionOptions button{
+    /* width: 200px; */
+    display: inline;
+    justify-content: space-between;
+    background-color: rgb(82, 26, 133);
+    color: white;
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.questionOptions button:hover{
+    background-color: rgb(157, 79, 230);
+}
+
+.questionNumber{
+    display: inline;
+    justify-content: space-between;
+}
+
+.questionNumber button{
+    float: right;
+    cursor: pointer;
+}
+
+.questionNumber .questionResult{
+    display: none;
 }
