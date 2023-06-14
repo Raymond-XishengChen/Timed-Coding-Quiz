@@ -39,8 +39,8 @@ body{
 
 /* Styling of "Start Quiz" button */
 .startButton Button{
-    /* display: block; */
-    display: none;
+    display: block;
+    /* display: none; */
     background-color: rgb(82, 26, 133);
     color: white;
     font-size: 25px;
@@ -87,11 +87,13 @@ body{
 .questionBox {
     /* position: flex; */
     /* width: 100px; */
-    /* display: block; */
-    display: none;
+    display: block;
+    /* display: none; */
     justify-content: center;
     align-items: center;
 }
+
+
 
 .questionHeader,
 .questionContent,
@@ -99,11 +101,17 @@ body{
 .questionNumber{
     width:200px;
     display: inline;
+    /* display: none; */
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-
+.questionOne,
+.questionTwo,
+.questionThree,
+.questionFour{
+    display: none;
+}
 /* .optionList{ */
     /* width: 190px; */
     /* justify-content: space-between; */
