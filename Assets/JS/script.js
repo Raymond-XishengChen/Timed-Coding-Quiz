@@ -11,14 +11,21 @@ var questionResult = document.querySelector(".questionResult");
 var scorePage = document.querySelector(".scorePage");
 var questionBox = document.querySelector(".questionBox");
 var quizInfo = document.querySelector(".quizInfo");
-var questionIndex = document.querySelector(".questionIndex");
+var questionNum = document.querySelector(".questionNum");
+var secondsLeft = document.querySelector(".secondsLeft");
+var qFourAns = document.querySelectorAll(".qFourAns");
+var finalScore = document.querySelector(".finalScore");
+
 
 var questionIndex = 0;
+var timeLeft;
+var checkQFour = 0;
 
 init();
 
 startButton.addEventListener("click", function() {
     // console.log("click" + questionIndex);
+    setTime();
     questionBox.setAttribute("style","display: block");
     displayFirstQuestion();
     ansSelected();
@@ -31,6 +38,8 @@ startButton.addEventListener("click", function() {
 
 function init(){
     questionIndex = 1;
+    timeLeft = 75;
+    checkQFour = 0;
     quizInfo.setAttribute("style","display: inline");
     startButton.setAttribute("style","display: flex");
     questionTwo.setAttribute("style","display: none");
@@ -38,13 +47,16 @@ function init(){
     questionFour.setAttribute("style","display: none");
     scorePage.setAttribute("style","display: none");
     questionBox.setAttribute("style","display: none");
+
 }
+
 function ansSelected(){
     for (var i=0; i<optionButton.length; i++){
         optionButton[i].addEventListener("click", function(){
             questionIndex++;
             console.log(questionIndex);
             displayNextQuestion();
+            checkFinished();
         })
     }
     for (var indexCorrect=0; indexCorrect < correctAns.length; indexCorrect++){
@@ -57,6 +69,7 @@ function ansSelected(){
         wrongAns[indexWrong].addEventListener("click", function(){
             questionResult.textContent = "You got it Wrong!";
             questionResult.setAttribute("style","display: block");
+            timeLeft = timeLeft - 10;
         })
     }
 }
@@ -65,25 +78,24 @@ function displayFirstQuestion(){
     startButton.setAttribute("style","display: none");
     quizInfo.setAttribute("style","display: none");
     questionOne.setAttribute("style","display: inline");
-    console.log(String(questionIndex));
-    questionIndex.textContent = String(questionIndex);
+    questionNum.textContent = questionIndex;
     // nextQuestion.disabled=true; 
 }
 function displaySecondQuestion(){
     questionOne.setAttribute("style","display: none");
     questionTwo.setAttribute("style","display: inline");
-    // nextQuestion.disabled=true; 
+    questionNum.textContent = questionIndex;
 }
 function displayThirdQuestion(){
     questionTwo.setAttribute("style","display: none");
     questionThree.setAttribute("style","display: inline");
-    // nextQuestion.disabled=true; 
+    questionNum.textContent = questionIndex;
 }
 
 function displayFourthQuestion(){
     questionThree.setAttribute("style","display: none");
     questionFour.setAttribute("style","display: inline");
-    // nextQuestion.disabled=true; 
+    questionNum.textContent = questionIndex;
 }
 
 function displayScorePage() {
@@ -104,3 +116,24 @@ function displayNextQuestion() {
     }
 }
 
+function setTime() {
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        secondsLeft.textContent = timeLeft;
+        if(timeLeft === 0){
+            clearInterval(timeInterval);
+            displayScorePage();
+        }else if(checkQFour){
+            clearInterval(timeInterval);
+        }
+        finalScore.textContent = timeLeft;
+    },1000)
+}
+
+function checkFinished() {
+    for (var indexQFour=0; indexQFour < qFourAns.length; indexQFour++){
+        qFourAns[indexQFour].addEventListener("click", function(){
+            checkQFour = 1;
+        })
+    }
+}
