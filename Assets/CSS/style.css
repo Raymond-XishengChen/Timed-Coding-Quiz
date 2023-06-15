@@ -98,7 +98,8 @@ body{
 .questionHeader,
 .questionContent,
 .questionOptions,
-.questionNumber{
+.questionNumber,
+.scorePage{
     width:200px;
     display: inline;
     /* display: none; */
@@ -109,7 +110,8 @@ body{
 .questionOne,
 .questionTwo,
 .questionThree,
-.questionFour{
+.questionFour,
+.scorePage{
     display: none;
 }
 /* .optionList{ */
