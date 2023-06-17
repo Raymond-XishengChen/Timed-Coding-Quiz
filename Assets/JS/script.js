@@ -15,7 +15,8 @@ var questionNum = document.querySelector(".questionNum");
 var secondsLeft = document.querySelector(".secondsLeft");
 var qFourAns = document.querySelectorAll(".qFourAns");
 var finalScore = document.querySelector(".finalScore");
-
+var submitButton = document.getElementById("submit");
+var savedInitial = document.getElementById("initial-text");
 
 var questionIndex = 0;
 var timeLeft;

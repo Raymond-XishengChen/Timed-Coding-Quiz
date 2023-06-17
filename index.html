@@ -10,7 +10,9 @@
 <body>
     <!-- High Score Link -->
     <div class="topRowNavs">
-        <div class="highScore"><button>View Highscores</button></div>
+        <div class="highScore">
+            <a href="./Assets/html/highscore.html"><button>View Highscores</button></a>
+        </div>
 
         <!-- Timeclock for displaying the time left -->
         <div class="timeClock">Time: <span class="secondsLeft">0</span></div>
@@ -153,6 +155,15 @@
     <div class="scorePage">
         <div class="allDone"><h2>All done!</h2></div>
         <div class="scoreLine"><h4>Your score is </h4><h4 class="finalScore"></h4></div>
+    
+        <form id="initials" method="POST">
+            <label for="initials">Please enter your initial: </label>
+            <input type="text" placeholder="abc" name="initial-text" id="initial-text" />
+            <a href="./Assets/html/highscore.html"><button id="submit">Submit</button></a>
+            
+        </form>
+        
+
     </div>
     <script src="./Assets/JS/script.js"></script>
 

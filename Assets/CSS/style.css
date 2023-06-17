@@ -9,7 +9,8 @@ body{
     display: none;
 }
 
-.infoHead {
+.infoHead,
+.highScore {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 25px;
     font-weight: 1000;
@@ -19,7 +20,8 @@ body{
     justify-content: center;
 }
 
-.infoContent {
+.infoContent
+ {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 15px;
     display: flex;
