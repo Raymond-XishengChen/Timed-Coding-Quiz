@@ -27,6 +27,7 @@ var checkQFour = 0;
 
 init();
 
+//when start button is clicked, show the first question, start timer and start checking if any answer is selected
 startButton.addEventListener("click", function() {
     // console.log("click" + questionIndex);
     setTime();
@@ -35,7 +36,7 @@ startButton.addEventListener("click", function() {
     ansSelected();
 });
 
-
+//initialising all essential variables and idsplay only the quiz informations
 function init(){
     questionIndex = 1;
     timeLeft = 75;
@@ -50,6 +51,7 @@ function init(){
 
 }
 
+//if any of the answers is selected, jump to the next question. Counter plus one 
 function ansSelected(){
     for (var i=0; i<optionButton.length; i++){
         optionButton[i].addEventListener("click", function(){
@@ -59,12 +61,14 @@ function ansSelected(){
             checkFinished();
         })
     }
+    //if the correction is selected, show text "you got it right" and no penalty
     for (var indexCorrect=0; indexCorrect < correctAns.length; indexCorrect++){
         correctAns[indexCorrect].addEventListener("click", function(){
             questionResult.textContent = "You got it right!";
             questionResult.setAttribute("style","display: block");
         })
     }
+    //if an incorrect answer is selected, show text "you got it wrong" and apply penalty
     for (var indexWrong=0; indexWrong < wrongAns.length; indexWrong++){
         wrongAns[indexWrong].addEventListener("click", function(){
             questionResult.textContent = "You got it Wrong!";
@@ -73,6 +77,8 @@ function ansSelected(){
         })
     }
 }
+
+//keep track on the question counter and display the correct question
 function displayFirstQuestion(){
     // questionIndex++;
     startButton.setAttribute("style","display: none");
@@ -116,6 +122,9 @@ function displayNextQuestion() {
     }
 }
 
+//show timeclock
+//time clock stops if no time left
+//time clock stops if all questions are answered
 function setTime() {
     var timeInterval = setInterval(function () {
         timeLeft--;
@@ -131,6 +140,7 @@ function setTime() {
     },1000)
 }
 
+//check if the last question is answered
 function checkFinished() {
     for (var indexQFour=0; indexQFour < qFourAns.length; indexQFour++){
         qFourAns[indexQFour].addEventListener("click", function(){
@@ -147,19 +157,19 @@ function saveScore() {
     localStorage.setItem("score", JSON.stringify(score));
   }
 
-  submitButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        saveScore();    
-        location.replace("./Assets/html/highscore.html");
-        renderLastScore();
-    });
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    saveScore();    
+    location.replace("./Assets/html/highscore.html");
+    renderLastScore();
+});
 
-    function renderLastScore() {
-        var lastScore = JSON.parse(localStorage.getItem("score"));
-        if (lastScore !== null) {
+function renderLastScore() {
+    var lastScore = JSON.parse(localStorage.getItem("score"));
+    if (lastScore !== null) {
         document.getElementById("initial-text").innerHTML = lastScore.initial;
         document.getElementById("finalScore").innerHTML = lastScore.score;
-        } else {
-          return;
-        }
+    } else {
+        return;
     }
+}
